@@ -26,7 +26,7 @@ node app.js
 
 ## 截图
 
-![ScreenShot1](D:\Users\Lenovo\Documents\Project\ScreenShot1.jpeg)
+![](https://github.com/wojiaosunxinhao/SunChat/blob/main/ScreenShot1.jpeg)
 
 ![](https://github.com/wojiaosunxinhao/SunChat/blob/main/ScreenShot2.jpeg)
 
