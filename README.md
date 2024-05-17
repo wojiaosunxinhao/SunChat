@@ -19,14 +19,14 @@ cd到SunChat目录，输入`npm install`，将会自动安装依赖。
 从`node`启动：
 
 ```bash
-node server.js
+node app.js
 ```
 
 现在在浏览器输入`localhost:8080`即可运行。
 
 ## 截图
 
-[![ScreenShot1](D:\Users\Lenovo\Documents\Project\ScreenShot1.jpeg)](https://github.com/wojiaosunxinhao/SunChat/blob/main/ScreenShot1.jpeg)
+![ScreenShot1](D:\Users\Lenovo\Documents\Project\ScreenShot1.jpeg)
 
 ![](https://github.com/wojiaosunxinhao/SunChat/blob/main/ScreenShot2.jpeg)
 
