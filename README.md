@@ -1,6 +1,6 @@
 
+![](https://github.com/wojiaosunxinhao/SunChat/blob/main/Icon.jpg)
 
-![Icon](D:\Users\Lenovo\Documents\Project\Icon.jpg)
 
 # SunChat
 
@@ -26,9 +26,9 @@ node server.js
 
 ## 截图
 
-![ScreenShot1](D:\Users\Lenovo\Documents\Project\ScreenShot1.jpeg)
+[![ScreenShot1](D:\Users\Lenovo\Documents\Project\ScreenShot1.jpeg)](https://github.com/wojiaosunxinhao/SunChat/blob/main/ScreenShot1.jpeg)
 
-![](D:\Users\Lenovo\Documents\Project\ScreenShot2.jpeg)
+![](https://github.com/wojiaosunxinhao/SunChat/blob/main/ScreenShot2.jpeg)
 
 表情包是来自UOJ的。
 
