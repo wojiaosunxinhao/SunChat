@@ -12,7 +12,7 @@
 
 ## 如何运行
 
-NodeJS最低版本：`18`
+NodeJS最低版本：`18.09`
 
 cd到SunChat目录，输入`npm install`，将会自动安装依赖。
 
