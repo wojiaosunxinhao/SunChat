@@ -1,0 +1,40 @@
+<div ng-switch on="info.type" on = "type">
+    <!-- 欢迎消息 -->
+    <div class="system-notification" ng-switch-when="welcome"><strong>系统:&nbsp;&nbsp;</strong><span>{{info.text}}加入了 聊天室</span>
+    </div>
+    <!-- 退出消息 -->
+    <div class="system-notification" ng-switch-when="bye"><strong>系统:&nbsp;&nbsp;</strong><span>{{info.text}}退出了 聊天室</span></div>
+    <div class="normal-message" ng-class="{others:self!==info.from,self:self===info.from}" ng-switch-when="normal">
+        <div class="name-wrapper"><span>用户名:{{info.from}} 时间: </span><span>{{time | date: 'HH:mm:ss' }}</span></div>
+        <div class="content-wrapper"><span class="content">{{info.text}}</span><br><br><br><br><br></div>
+    </div>
+    <!-- 表情包消息 -->
+    <div class="emoji-message" ng-switch-when="emoji">
+        <div class="name-wrapper"><span>想要飞的更高的{{info.from}} 时间: </span><span>{{time | date: 'HH:mm:ss' }}</span></div>
+        <div class="content-wrapper"><p>我要飞的更高~</p><img src="./img/src/emoji/fly-bear.gif" alt="飞天熊表情包"><br><br><br><br><br></div>
+    </div>
+    <div class="emoji-message" ng-switch-when="emoji-2">
+        <div class="name-wrapper"><span>顶天立地的{{info.from}} 时间: </span><span>{{time | date: 'HH:mm:ss' }}</span></div>
+        <div class="content-wrapper"><p>顶！</p><img src="./img/src/emoji/ding.gif" alt="飞天熊表情包"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div>
+    </div>
+    <div class="emoji-message" ng-switch-when="emoji-3">
+        <div class="name-wrapper"><span>尴尬的{{info.from}} 时间: </span><span>{{time | date: 'HH:mm:ss' }}</span></div>
+        <div class="content-wrapper"><p>额...</p><img src="./img/src/emoji/boom.gif" alt="飞天熊表情包"><br><br><br><br><br></div>
+    </div>
+    <div class="emoji-message" ng-switch-when="emoji-4">
+        <div class="name-wrapper"><span>正在思考的{{info.from}} 时间: </span><span>{{time | date: 'HH:mm:ss' }}</span><span style = "color: red;"> 不要打扰ta</span></div>
+        <div class="content-wrapper"><p>别吵，我在思考</p><img src="./img/src/emoji/thinking.gif" alt="飞天熊表情包"><br><br><br><br><br></div>
+    </div>
+    <div class="emoji-message" ng-switch-when="emoji-5">
+        <div class="name-wrapper"><span>非常疑惑的{{info.from}} 时间: </span><span>{{time | date: 'HH:mm:ss' }}</span><span style = "color: red;"> 很喜欢{{info.from}}的一句话:</span></div>
+        <div class="content-wrapper"><p>啊？</p><img src="./img/src/emoji/a.gif" alt="飞天熊表情包"><br><br><br><br><br></div>
+    </div>
+    <div class="emoji-message" ng-switch-when="emoji-6">
+        <div class="name-wrapper"><span>口吐芬芳的{{info.from}} 时间: </span><span>{{time | date: 'HH:mm:ss' }}</span><span style = "color: red;"></span></div>
+        <div class="content-wrapper"><p>@#$%%$$...</p><img src="./img/src/emoji/ktff.gif" alt="飞天熊表情包"><br><br><br><br><br></div>
+    </div>
+    <div class="emoji-message" ng-switch-when="emoji-7">
+        <div class="name-wrapper"><span>用户名: {{info.from}} 时间: </span><span>{{time | date: 'HH:mm:ss' }}</span><span style = "color: gold;">高级信息</span></div>
+        <div class="content-wrapper"></div><iframe src="box.html" width="600" height="600" frameborder="0"></iframe><br><br><br><br><br></div>
+    </div>
+</div>

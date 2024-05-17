@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Box</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=0.0">
+        <style>
+            *{
+                /* 不使用项目符号 */
+                list-style: none;
+                margin:0;
+                padding:0;
+            }
+            
+            .rotate-box 
+            {
+			height: 300px;
+			width: 300px;
+			overflow: hidden; /* 隐藏翻转上去和翻转下去的图片 */
+		    }
+            .rotate-inner 
+            {
+			transition: all .4s ease;
+			perspective: 300px; /* 重点属性，定义 3D 元素距视图的距离，有他才有3D效果 */
+			-webkit-perspective: 300px;
+            }
+            /* 设置关键帧，动画旋转显示 */
+        @keyframes boxRevolve{
+                0%{
+                    transform: rotateX(20deg) rotateY(200deg);
+                }
+                25%{
+                    transform: rotateX(200deg) rotateY(380deg);
+                }
+                50%{
+                    transform: rotateX(20deg) rotateY(560deg);
+                }
+                75%{
+                    transform: rotateX(-160deg) rotateY(740deg);
+                }
+                100%{
+                    transform: rotateX(20deg) rotateY(920deg);
+                }
+            }
+            body {
+                cursor: none;
+            }
+            .box
+            {
+                width: 300px;
+                height: 300px;
+                position: fixed;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                margin: 200px auto;
+                transform-style: preserve-3d;
+                transform: rotateX(20deg) rotateY(-50deg);
+                /* 关键帧的开启与开启时间 */
+                /* animation: boxRevolve 30s linear infinite;*/
+            }
+            .box div
+            {
+                cursor: grab;
+                width: 300px;
+                height: 300px;
+                text-align: center;
+                list-style: 300px;
+                font-size: 100px;
+                font-weight: bolder;
+                color: #fff;
+                position: absolute;
+                left: 0;top: 0;
+                /*opacity: 0.5;*/
+                /* 设置透明度 */
+                opacity: 0.7;
+                box-shadow: 0 0 10px rgb(100, 99, 99);
+            }
+            .box:active div
+            {
+                cursor: grabbing;
+            }
+            .con1
+            {
+                background-image: url('./png.png');
+                /* 设置颜色 */
+                background-color: skyblue;
+                /* 图片大小，100%是充满 */
+                background-size: 100% 100%;
+                /* 元素的2D或3D的转换 */
+                transform: translateZ(150px);
+            }
+            .con2
+            {
+                background-image: url('./png.png');
+                background-color: slateblue;
+                background-size: 100% 100%;
+                transform: translateZ(-150px);
+            }
+            .con3
+            {
+                background-image: url('./png.png');
+                background-color: springgreen;
+                background-size: 100% 100%;
+                transform: translateY(150px) rotateX(-90deg);
+            }
+            .con4
+            {
+                background-image: url('./png.png');
+                background-image: url('./png.png');
+                background-color: springgreen;
+                background-size: 100% 100%;
+                transform: translateY(-150px) rotateX(90deg);
+            }
+            .con5
+            {
+                background-image: url('./png.png');
+                background-color: teal;
+                background-size: 100% 100%;
+                transform: translateX(150px) rotateY(90deg);
+            }
+            .con6
+            {
+                background-image: url('./png.png');
+                background-color: yellow;
+                background-size: 100% 100%;
+                transform: translateX(-150px) rotateY(90deg);
+            }
+
+            
+
+        </style>
+    </head>
+    <body>
+        
+        <div class="box" id="box">
+            <div class="con1"></div>
+            <div class="con2"></div>
+            <div class="con3"></div>
+            <div class="con4"></div>
+            <div class="con5"></div>
+            <div class="con6"></div>
+        </div>
+    </body>
+
+    <script>
+        // 鼠标左键点击事件
+        document.onmousedown = function (event) {
+            var that = document.getElementById('box');
+            var reg = /\-?[0-9]+\.?[0-9]*/g;
+            var bf = that.style.transform || '0,0';
+            var arr = bf.match(reg);
+            var bfX = Number(arr[0]);
+            var bfY = Number(arr[1]);
+            var startX = event.pageX;
+            var startY = event.pageY;
+            // 鼠标指针移动到指定位置的对象时发生
+            document.onmousemove = function (event) {
+                var disX = event.pageX - startX;
+                var disY = event.pageY - startY;
+                var y = (disX + bfY) % 360;
+                var x = -(disY + bfX) % 360;
+                that.style.webkitTransform = "rotateX(" + x + "deg) rotateY(" + y + "deg) rotateZ(0deg)";
+            };
+            // 鼠标按键被松开时发生的事件
+            document.onmouseup = function (event) {
+                document.onmousemove = null;
+                document.onmouseup = null;
+            };
+            return false;
+        }
+    </script>
+
+</html>

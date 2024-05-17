@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>聊天室 - 请先登录</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdui/0.4.3/css/mdui.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdui/0.4.3/js/mdui.min.js"></script>
+    <link href="./bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/sweetalert2/11.0.18/sweetalert2.min.css">
+    <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="./socket.io/socket.io.js"></script>
+    <script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="./js/index.js"></script>
+    <style>
+        .custom-input {
+            width: 200px; /* 设置输入框的宽度，可以根据需要调整 */
+        }
+
+        .post-form {
+            display: inline-block;
+            width: 200px; /* 或者你希望的其他宽度值 */
+        }
+
+
+    </style>
+    <!--<link rel = "favicon" href = "favicon.bmp">-->
+    <!--插入favicon:-->
+    <link rel="icon" href="./img/icon/favicon.ico" type="image/x-icon">
+
+</head>
+<body class="mdui-theme-primary-blue-grey mdui-theme-accent-blue" ng-app="chatRoom" ng-controller="chatCtrl" >
+    <script src="https://cdn.bootcdn.net/ajax/libs/sweetalert2/11.0.18/sweetalert2.all.min.js"></script>
+<!-- chat room -->
+
+<div class="chat-room-wrapper" ng-show="hasLogined" >
+    <div class="online mdui-panel online mdui-shadow-0 panel panel-success">
+        <div class="mdui-panel-header panel-heading">
+            <h3 class="mdui-panel-title panel-title">在线<span class="user-number">{{users.length-1}}</span></h3>
+        </div>
+        <div class="user-wrapper mdui-panel-body">
+            <user iscurrentreceiver="receiver===user.nickname" info="user" ng-click="setReceiver(user.nickname)" ng-repeat="user in users"></user>
+        </div>
+    </div>
+    <div class="chat-room mdui-panel chat-room mdui-shadow-0 panel panel-success">
+        <div class="mdui-panel-header panel-heading">
+            <h3 class="mdui-panel-title panel-title">{{receiver?receiver:"群聊"}}</h3>
+        </div>
+        <div class="message-wrapper mdui-panel-body panel-body" style="background-image: url('./img/src/background/background.jpg'); background-size: cover;">
+            <message self="nickname" scrolltothis="scrollToBottom()" info="message" ng-repeat="message in messages"></message>
+        </div>
+        
+        <div class="panel-footer">
+            <h3>表情包调用</h3>
+            <p>飞天熊：[飞天熊] , 顶：[顶] , 额：[额] , 思考：[思考] , 啊?:[啊]</p>
+            <form class="post-form form-inline" novalidate name="postform" ng-submit="postMessage()">
+                <!--将他变得长一些:-->
+                <input type="text" class="mdui-textfield-input" ng-model="words" required ng-keyup="checkInput(words)" required placeholder="说点什么呗">
+            </form>
+            <button  type="button" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" ng-click="postMessage()" ng-disabled="!words">发射！</button>
+        </div>
+        
+        
+        
+
+    </div>
+</div>
+
+<!-- end of chat room -->
+
+<!-- login form -->
+<div class="userform-wrapper"  ng-show="!hasLogined" style = "background-image: url('./img/src/background/background.jpg');background-size: cover;">
+    <form class="form-inline login" novalidate name="userform" ng-submit="login()"style = "filter: blur(0px);">
+        <div class="form-group">
+            <label for="nickname" class="sr-only"></label>
+            <div class="input-group">
+                <input type="text" class="mdui-textfield-input" id="nickname" ng-model="nickname" required placeholder="输入名称"/>
+            </div>
+        </div>
+        <button type="submit" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" ng-disabled="userform.$invalid">进入</button>
+        <p>名称超过30个字将被封禁。</p>
+        <p ng-show="userExisted" class="help-block">此昵称已经存在！</p>
+    </form>
+</div>
+<!-- end of login form -->
+
+
+</body>
+</html>
